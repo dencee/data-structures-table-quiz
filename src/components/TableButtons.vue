@@ -2,6 +2,7 @@
   <div class="btn-container">
     <TableButton @btn-clicked="resetAnswers" title="reset" />
     <TableButton @btn-clicked="checkAnswers" title="check" />
+    <TableButton @btn-clicked="showAnswers" title="answers" />
   </div>
 </template>
 
@@ -13,6 +14,7 @@ const tableDataStore = useTableDataStore();
 
 const checkAnswers = () => tableDataStore.checkCells();
 const resetAnswers = () => tableDataStore.resetCells();
+const showAnswers = () => tableDataStore.showAnswers();
 
 </script>
 

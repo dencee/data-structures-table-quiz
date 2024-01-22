@@ -21,56 +21,56 @@ export const useTableDataStore = defineStore('tableData', () => {
     [],
     []
   ]);
-  const cellBgColors = reactive(Array.from({ length: 5 }, () => Array(5).fill('white')));
+  const cellBgColors = reactive(Array.from({ length: 5 }, () => Array(5).fill(null)));
 
   const cellData = reactive([
     [
       {
         dataStructure: 'array',
         operation: 'declare',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: /\bint\s*\[\s*\] \D+;$/,
+        regex: /\bint\s*\[\s*\]\s*[a-z]\D*\s*;$/,
         correctAnswer: 'int[] arr;'
       },
       {
         dataStructure: 'list',
         operation: 'declare',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bList<Integer>\s+[a-z]\D*\s*;$/,
         correctAnswer: 'List<Integer> myList;'
       },
       {
         dataStructure: 'stack',
         operation: 'declare',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bStack<Integer>\s+[a-z]\D*\s*;$/,
         correctAnswer: 'Stack<Integer> myStack;'
       },
       {
         dataStructure: 'queue',
         operation: 'declare',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\Queue<Integer>\s+[a-z]\D*\s*;$/,
         correctAnswer: 'Queue<Integer> myQueue;'
       },
       {
         dataStructure: 'set',
         operation: 'declare',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bSet<Integer>\s+[a-z]\D*\s*;$/,
         correctAnswer: 'Set<Integer> mySet;'
       },
       {
         dataStructure: 'map',
         operation: 'declare',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bMap<Integer\s*,\s*String>\s+[a-z]\D*\s*;$/,
         correctAnswer: 'Map<Integer, String> myMap;'
       },
     ],
@@ -78,50 +78,50 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'array',
         operation: 'initialize',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\s*=\s*new\s+int\[\d+\]\s*;$/,
         correctAnswer: 'arr = new int[5];'
       },
       {
         dataStructure: 'list',
         operation: 'initialize',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\s*=\s*new\s+ArrayList<(\s*|Integer)>\(\)\s*;$/,
         correctAnswer: 'myList = new ArrayList<>();'
       },
       {
         dataStructure: 'stack',
         operation: 'initialize',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\s*=\s*new\s+Stack<(\s*|Integer)>\(\)\s*;$/,
         // TODO: Use ArrayDeque instead
         correctAnswer: 'myStack = new Stack<>();'
       },
       {
         dataStructure: 'queue',
         operation: 'initialize',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\s*=\s*new\s+LinkedList<(\s*|Integer)>\(\)\s*;$/,
         correctAnswer: 'myQueue = new LinkedList<>();'
       },
       {
         dataStructure: 'set',
         operation: 'initialize',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\s*=\s*new\s+HashSet<(\s*|Integer)>\(\)\s*;$/,
         correctAnswer: 'mySet = new HashSet<>();'
       },
       {
         dataStructure: 'map',
         operation: 'initialize',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\s*=\s*new\s+HashMap<(\s*|Integer,\s*String)>\(\)\s*;$/,
         correctAnswer: 'myMap = new HashMap<>();'
       },
     ],
@@ -129,24 +129,24 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'array',
         operation: 'get',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b(int|Integer)\s+[a-z]\D*\s*=\s*[a-z]\D*\s*\[\d+\]\s*;$/,
         correctAnswer: 'int firstElement = arr[0];'
       },
       {
         dataStructure: 'list',
         operation: 'get',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b(int|Integer)\s+[a-z]\D*\s*=\s*[a-z]\D*\.get\(\d+\)\s*;$/,
         correctAnswer: 'Integer firstElement = myList.get(0);'
       },
       
       {
         dataStructure: 'stack',
         operation: 'get',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         // correctAnswer: 'int element = myStack.get(0);'
@@ -155,7 +155,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'queue',
         operation: 'get',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -163,7 +163,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'set',
         operation: 'get',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -171,9 +171,9 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'map',
         operation: 'get',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bString\s+[a-z]\D*\s*=\s*[a-z]\D*\.get\(\d+\)\s*;$/,
         correctAnswer: 'String value = myMap.get(42);'
       },
     ],
@@ -181,23 +181,23 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'array',
         operation: 'set',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\s*\[\d+\]\s*=\s*\d+;$/,
         correctAnswer: 'arr[0] = 42;'
       },
       {
         dataStructure: 'list',
         operation: 'set',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
-        correctAnswer: 'myList.set(0, 42)'
+        regex: /\b[a-z]\D*\.set\(\s*\d+\s*,\s*\d+\s*\)\s*;$/,
+        correctAnswer: 'myList.set(0, 42);'
       },
       {
         dataStructure: 'stack',
         operation: 'set',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -205,7 +205,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'queue',
         operation: 'set',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -213,7 +213,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'set',
         operation: 'set',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -221,9 +221,9 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'map',
         operation: 'set',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\.put\(\d+\s*,\s*\".*\"\)\s*;$/,
         correctAnswer: 'myMap.put(42, "Ana");'
       },
     ],
@@ -231,49 +231,49 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'array',
         operation: 'iterate',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bfor\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z]\D*\.length\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
         correctAnswer: 'for(int i = 0; i < arr.length; i++){}'
       },
       {
         dataStructure: 'list',
         operation: 'iterate',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
-        correctAnswer: 'for(int i = 0; i < myList.size(); i++){};'
+        regex: /\bfor\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z]\D*\.size\(\)\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
+        correctAnswer: 'for(int i = 0; i < myList.size(); i++){}'
       },
       {
         dataStructure: 'stack',
         operation: 'iterate',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bwhile\s*\(\s*!\s*[a-z]\D*\.isEmpty\s*\(\s*\)\s*\)\s*{\s*}$/,
         correctAnswer: 'while(!myStack.isEmpty()){}'
       },
       {
         dataStructure: 'queue',
         operation: 'iterate',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bwhile\s*\(\s*!\s*[a-z]\D*\.isEmpty\s*\(\s*\)\s*\)\s*{\s*}$/,
         correctAnswer: 'while(!myQueue.isEmpty()){}'
       },
       {
         dataStructure: 'set',
         operation: 'iterate',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bfor\s*\(\s*(int|Integer)\s+[a-z]\D*\s*:\s*[a-z]\D*\s*\)\s*{\s*}$/,
         correctAnswer: 'for(Integer eachElement : mySet){}'
       },
       {
         dataStructure: 'map',
         operation: 'iterate',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\bfor\s*\(\s*(int|Integer)\s+[a-z]\D*\s*:\s*[a-z]\D*\.keySet\(\)\s*\)\s*{\s*}$/,
         correctAnswer: 'for(Integer eachKey : myMap.keySet()){}'
       },
     ],
@@ -281,7 +281,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'array',
         operation: 'add',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -289,41 +289,41 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'list',
         operation: 'add',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\.add\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myList.add(42);'
       },
       {
         dataStructure: 'stack',
         operation: 'add',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\.push\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myStack.push(42);'
       },
       {
         dataStructure: 'queue',
         operation: 'add',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\.offer\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myQueue.offer(42);'
       },
       {
         dataStructure: 'set',
         operation: 'add',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\.add\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'mySet.add(42);',
       },
       {
         dataStructure: 'map',
         operation: 'add',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\.put\(\s*\d+\s*,\s*\".*\"\s*\)\s*;$/,
         correctAnswer: 'myMap.put(42, "Ana");'
       },
     ],
@@ -331,7 +331,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'array',
         operation: 'remove',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -339,41 +339,41 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'list',
         operation: 'remove',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\.remove\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myList.remove(0);'
       },
       {
         dataStructure: 'stack',
         operation: 'remove',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
-        correctAnswer: 'Integer top = myStack.pop();'
+        regex: /\b[a-z]\D*\.pop\(\s*\)\s*;$/,
+        correctAnswer: 'myStack.pop();'
       },
       {
         dataStructure: 'queue',
         operation: 'remove',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
-        correctAnswer: 'Integer front = myQueue.poll();'
+        regex: /\b[a-z]\D*\.poll\(\s*\)\s*;$/,
+        correctAnswer: 'myQueue.poll();'
       },
       {
         dataStructure: 'set',
         operation: 'remove',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
-        correctAnswer: 'mySet.remove(42)'
+        regex: /\b[a-z]\D*\.remove\(\s*\d+\s*\)\s*;$/,
+        correctAnswer: 'mySet.remove(42);'
       },
       {
         dataStructure: 'map',
         operation: 'remove',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\.remove\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myMap.remove(42);'
       },
     ],
@@ -381,7 +381,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'array',
         operation: 'insert',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -389,15 +389,15 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'list',
         operation: 'insert',
-        bg: 'white',
+        bg: null,
         input: '',
-        regex: '',
+        regex: /\b[a-z]\D*\.add\(\s*\d+\s*,\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myList.add(0, 42);'
       },
       {
         dataStructure: 'stack',
         operation: 'insert',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -405,7 +405,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'queue',
         operation: 'insert',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -413,7 +413,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'set',
         operation: 'insert',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -421,7 +421,7 @@ export const useTableDataStore = defineStore('tableData', () => {
       {
         dataStructure: 'map',
         operation: 'insert',
-        bg: 'gray',
+        bg: 'black',
         input: null,
         regex: null,
         correctAnswer: null,
@@ -456,16 +456,22 @@ export const useTableDataStore = defineStore('tableData', () => {
    */
   function checkCells() {
 
-    for(let i = 0; i < cellData.length; i++) {
+    const checkFn = (cell) => {
 
-      for(let k = 0; k < cellData[i].length; k++){
-        const eachCell = cellData[i][k];
+      if(cell?.regex && cell?.input){
 
-        if(eachCell?.regex && eachCell?.input){
-
-          const isCorrect = eachCell.regex.test(eachCell.input);
-          cellData[i][k].bg = isCorrect ? 'aqua' : 'red';
+        try {
+          const isCorrect = cell.regex.test(cell.input);
+          cell.bg = isCorrect ? '#00ADB5' : '#ff0033';
+        } catch(err){
+          console.error(`ERROR: ${err}`, cell);
         }
+      }
+    }
+
+    for(const eachOperationArr of cellData){
+      for(const eachCell of eachOperationArr){
+        checkFn(eachCell);
       }
     }
   }
@@ -476,10 +482,10 @@ export const useTableDataStore = defineStore('tableData', () => {
 
     const clearFn = isClear 
       ? (cell) => {
-        cell.bg = cell.correctAnswer ? 'white' : 'gray'
+        cell.bg = cell.correctAnswer ? null : 'black'
         cell.input = '';
       }
-      : (cell) => cell.bg = cell.correctAnswer ? 'white' : 'gray';
+      : (cell) => cell.bg = cell.correctAnswer ? null : 'black';
 
     for(const eachOperationArr of cellData){
       for(const eachCell of eachOperationArr){
@@ -488,9 +494,25 @@ export const useTableDataStore = defineStore('tableData', () => {
     }
   }
 
+  function showAnswers(){
+    console.log('showing answers');
+
+    const showFn = (cell) => {
+      if(cell.correctAnswer){
+        cell.input = cell.correctAnswer;
+      }
+    };
+
+    for(const eachOperationArr of cellData){
+      for(const eachCell of eachOperationArr){
+        showFn(eachCell);
+      }
+    }
+  }
+
   return {
     dataStructures, operations, cellData,
     formattedDataStructures, formattedOperations,
-    checkCells, resetCells,
+    checkCells, resetCells, showAnswers,
   };
 });
