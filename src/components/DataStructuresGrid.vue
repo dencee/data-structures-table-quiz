@@ -8,15 +8,19 @@
     </thead>
     <tbody>
 
+      <!-- :class="{ 'expand-row': (expandRow && ( expandRow === 0 || k === expandRow)) }" -->
       <tr v-for="(eachOperation, i) in formattedOperations" :key="eachOperation">
         <td>{{ eachOperation }}</td>
         <td
           v-for="(cell, k) in cellData[i]"
           :key="`${i}${k}`"
           :id="`${i}${k}`"
-          :title="cell.correctAnswer"
+          :title="Array.isArray(cell.correctAnswer) ? cell.correctAnswer.join('\n') : cell.correctAnswer"
+          :class="{ 'expand-row': (expandRow != null && expandRow === k) }"
         >
           <input 
+            @focus="setExpandedRow(k)"
+            @blur="expandRow = null"
             v-model="cell.input"
             :style="{ 'background-color': cell.bg }"
             :disabled="cell.bg === 'black'"
@@ -29,6 +33,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useTableDataStore } from '@/stores/tableData';
 
@@ -36,6 +41,11 @@ const tableDataStore = useTableDataStore();
 const { formattedDataStructures, formattedOperations } = tableDataStore;
 const { cellData } = storeToRefs(tableDataStore);
 
+const expandRow = ref(null);
+const setExpandedRow = (row) => {
+  expandRow.value = row;
+  console.log(expandRow.value);
+}
 
 </script>
 
@@ -70,5 +80,8 @@ table {
       min-height: 4rem;
     }
   }
+}
+.expand-row{
+  width: 30%;
 }
 </style>

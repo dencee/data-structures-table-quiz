@@ -27,7 +27,7 @@ const isReset = computed(() => props.title === 'reset');
   text-align: center;
   border: 1px solid var(--border);
   border-radius: 3px;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   background-color: var(--button-background);
 }
 .btn-check:hover {

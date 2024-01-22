@@ -233,16 +233,28 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'iterate',
         bg: null,
         input: '',
-        regex: /\bfor\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z]\D*\.length\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
-        correctAnswer: 'for(int i = 0; i < arr.length; i++){}'
+        regex: [
+          /\bfor\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z]\D*\.length\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
+          /\bfor\s*\(\s*(int|Integer)\s+[a-z]\D*\s*:\s*[a-z]\D*\s*\)\s*{\s*}$/,
+        ],
+        correctAnswer: [
+          'for(int i = 0; i < arr.length; i++){}',
+          'for(int eachElement : arr){}'
+        ]
       },
       {
         dataStructure: 'list',
         operation: 'iterate',
         bg: null,
         input: '',
-        regex: /\bfor\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z]\D*\.size\(\)\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
-        correctAnswer: 'for(int i = 0; i < myList.size(); i++){}'
+        regex: [
+          /\bfor\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z]\D*\.size\(\)\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
+          /\bfor\s*\(\s*(int|Integer)\s+[a-z]\D*\s*:\s*[a-z]\D*\s*\)\s*{\s*}$/,
+        ],
+        correctAnswer: [
+          'for(int i = 0; i < myList.size(); i++){}',
+          'for(int eachElement : arr){}'
+        ]
       },
       {
         dataStructure: 'stack',
@@ -456,12 +468,25 @@ export const useTableDataStore = defineStore('tableData', () => {
    */
   function checkCells() {
 
+    const checkRegex = (cell) => {
+      if(!Array.isArray(cell.regex)){
+        return cell.regex.test(cell.input);
+      }
+
+      for(const eachRegex of cell.regex){
+        if(eachRegex.test(cell.input)){
+          return true;
+        }
+      }
+      return false;
+    }
+
     const checkFn = (cell) => {
 
       if(cell?.regex && cell?.input){
 
         try {
-          const isCorrect = cell.regex.test(cell.input);
+          const isCorrect = checkRegex(cell);
           cell.bg = isCorrect ? '#00ADB5' : '#ff0033';
         } catch(err){
           console.error(`ERROR: ${err}`, cell);
@@ -499,7 +524,7 @@ export const useTableDataStore = defineStore('tableData', () => {
 
     const showFn = (cell) => {
       if(cell.correctAnswer){
-        cell.input = cell.correctAnswer;
+        cell.input = Array.isArray(cell.correctAnswer) ? cell.correctAnswer[0] : cell.correctAnswer;
       }
     };
 

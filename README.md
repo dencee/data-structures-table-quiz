@@ -1,6 +1,7 @@
 # java data structures quiz
 
 Regular expression for checking.
+
 Hover over cells for hints.
 
 ## Customize configuration
