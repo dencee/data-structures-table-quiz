@@ -1,7 +1,5 @@
 const fs = require('fs')
 const cp = require('child_process');
-const os = require("os");
-const path = require('path');
 
 function testJava(expressionToTest) {
     const testFile = `./Test.java`;

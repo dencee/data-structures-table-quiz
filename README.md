@@ -2,9 +2,17 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## external npm packages used
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Needed node core modules for web ->
+https://www.npmjs.com/package/vite-plugin-node-polyfills
+
+```npm install --save-dev vite-plugin-node-polyfills```
+
+Needed memfs for browsers writes, no fs browser support ->
+https://www.npmjs.com/package/memfs
+
+```npm i memfs```
 
 ## Customize configuration
 

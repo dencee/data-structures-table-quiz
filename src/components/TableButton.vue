@@ -11,9 +11,6 @@
 
 <script setup>
 import { computed, defineProps } from 'vue'
-import { useTableDataStore } from '@/stores/tableData';
-
-const tableDataStore = useTableDataStore();
 
 const props = defineProps({
   title: String,
