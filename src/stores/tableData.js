@@ -149,6 +149,8 @@ export const useTableDataStore = defineStore('tableData', () => {
         bg: 'black',
         input: null,
         regex: null,
+        // Omit this because getting from the middle of the stack is not good IMO
+        // Plus, ArrayDeque is often a better choice than Stack class anyway...
         // correctAnswer: 'int element = myStack.get(0);'
         correctAnswer: null,
       },
@@ -448,7 +450,7 @@ export const useTableDataStore = defineStore('tableData', () => {
     return dataStructures.map((eachDataStructure) => {
 
       if(eachDataStructure === 'array'){
-        return `int[]`;
+        return `int array`;
       } else if(eachDataStructure === 'map'){
         return `${capitalizeFirst(eachDataStructure)}<Integer, String>`;
       }

@@ -19,7 +19,7 @@
           :class="{ 'expand-row': (expandRow != null && expandRow === k) }"
         >
           <input 
-            @focus="setExpandedRow(k)"
+            @focus="expandRow = k"
             @blur="expandRow = null"
             v-model="cell.input"
             :style="{ 'background-color': cell.bg }"
@@ -42,10 +42,6 @@ const { formattedDataStructures, formattedOperations } = tableDataStore;
 const { cellData } = storeToRefs(tableDataStore);
 
 const expandRow = ref(null);
-const setExpandedRow = (row) => {
-  expandRow.value = row;
-  console.log(expandRow.value);
-}
 
 </script>
 
