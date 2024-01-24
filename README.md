@@ -4,6 +4,10 @@ Regular expression for checking.
 
 Hover over cells for hints.
 
+Use Alt + direction keys for quick navigation between cells.
+
+Use Enter key for quick checking.
+
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
