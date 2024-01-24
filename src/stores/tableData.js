@@ -30,7 +30,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'declare',
         bg: null,
         input: '',
-        regex: /\bint\s*\[\s*\]\s*[a-z]\D*\s*;$/,
+        regex: /\bint\s*\[\s*\]\s+[a-z]\D*\s*;$/,
         correctAnswer: 'int[] arr;'
       },
       {
@@ -80,49 +80,85 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'initialize',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\s*=\s*new\s+int\[\d+\]\s*;$/,
-        correctAnswer: 'arr = new int[5];'
+        regex: [
+          /\b[a-z]\D*\s*=\s*new\s+int\[\d+\]\s*;$/,
+          /\b(int|Integer)\s*\[\]\s+[a-z]\D*\s*=\s*new\s+int\[\d+\]\s*;$/,
+        ],
+        correctAnswer: [
+          'arr = new int[5];',
+          'int[] arr = new int[5];'
+        ],
       },
       {
         dataStructure: 'list',
         operation: 'initialize',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\s*=\s*new\s+ArrayList<(\s*|Integer)>\(\)\s*;$/,
-        correctAnswer: 'myList = new ArrayList<>();'
+        regex: [
+          /\b[a-z]\D*\s*=\s*new\s+ArrayList<(\s*|Integer)>\(\)\s*;$/,
+          /\bList<Integer>\s+[a-z]\D*\s*=\s*new\s+ArrayList<(\s*|Integer)>\(\)\s*;$/,
+        ],
+        correctAnswer: [
+          'myList = new ArrayList<>();',
+          'List<Integer> myList = new ArrayList<>();',
+        ],
       },
       {
         dataStructure: 'stack',
         operation: 'initialize',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\s*=\s*new\s+Stack<(\s*|Integer)>\(\)\s*;$/,
+        regex: [
+          /\b[a-z]\D*\s*=\s*new\s+Stack<(\s*|Integer)>\(\)\s*;$/,
+          /\bStack<Integer>\s+[a-z]\D*\s*=\s*new\s+Stack<(\s*|Integer)>\(\)\s*;$/,
+        ],
         // TODO: Use ArrayDeque instead
-        correctAnswer: 'myStack = new Stack<>();'
+        correctAnswer: [
+          'myStack = new Stack<>();',
+          'Stack<Integer> myStack = new Stack<>();',
+        ]
       },
       {
         dataStructure: 'queue',
         operation: 'initialize',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\s*=\s*new\s+LinkedList<(\s*|Integer)>\(\)\s*;$/,
-        correctAnswer: 'myQueue = new LinkedList<>();'
+        regex: [
+          /\b[a-z]\D*\s*=\s*new\s+LinkedList<(\s*|Integer)>\(\)\s*;$/,
+          /\bQueue<Integer>\s+[a-z]\D*\s*=\s*new\s+LinkedList<(\s*|Integer)>\(\)\s*;$/,
+        ],
+        correctAnswer: [
+          'myQueue = new LinkedList<>();',
+          'Queue<Integer> myQueue = new LinkedList<>();',
+        ]
       },
       {
         dataStructure: 'set',
         operation: 'initialize',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\s*=\s*new\s+HashSet<(\s*|Integer)>\(\)\s*;$/,
-        correctAnswer: 'mySet = new HashSet<>();'
+        regex: [
+          /\b[a-z]\D*\s*=\s*new\s+HashSet<(\s*|Integer)>\(\)\s*;$/,
+          /\bSet<Integer>\s+[a-z]\D*\s*=\s*new\s+HashSet<(\s*|Integer)>\(\)\s*;$/,
+        ],
+        correctAnswer: [
+          'mySet = new HashSet<>();',
+          'Set<Integer> mySet = new HashSet<>();',
+        ]
       },
       {
         dataStructure: 'map',
         operation: 'initialize',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\s*=\s*new\s+HashMap<(\s*|Integer,\s*String)>\(\)\s*;$/,
-        correctAnswer: 'myMap = new HashMap<>();'
+        regex: [
+          /\b[a-z]\D*\s*=\s*new\s+HashMap<(\s*|Integer,\s*String)>\(\)\s*;$/,
+          /\bMap<Integer,\s*String>\s+[a-z]\D*\s*=\s*new\s+HashMap<(\s*|Integer,\s*String)>\(\)\s*;$/,
+        ],
+        correctAnswer: [
+          'myMap = new HashMap<>();',
+          'Map<Integer, String> myMap = new HashMap<>();',
+        ]
       },
     ],
     [
@@ -150,7 +186,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         input: null,
         regex: null,
         // Omit this because getting from the middle of the stack is not good IMO
-        // Plus, ArrayDeque is often a better choice than Stack class anyway...
+        // Plus, ArrayDeque is often a better choice than the Stack class anyway...
         // correctAnswer: 'int element = myStack.get(0);'
         correctAnswer: null,
       },

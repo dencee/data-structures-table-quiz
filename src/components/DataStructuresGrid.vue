@@ -21,7 +21,10 @@
           <input 
             @focus="expandRow = k"
             @blur="expandRow = null"
+            @keyup.alt="keyboardNavigate($event)"
+            @keyup.enter="tableDataStore.checkCells()"
             v-model="cell.input"
+            :ref="(el) => cellRefs[`${i}${k}`] = el"
             :style="{ 'background-color': cell.bg }"
             :disabled="cell.bg === 'black'"
             type="text" 
@@ -42,7 +45,34 @@ const { formattedDataStructures, formattedOperations } = tableDataStore;
 const { cellData } = storeToRefs(tableDataStore);
 
 const expandRow = ref(null);
+const cellRefs = ref({});
 
+function keyboardNavigate(event){
+
+  // left  = keyCode 37
+  // up    = keyCode 38
+  // right = keyCode 39
+  // down  = keyCode 40
+  const keyPressed = event.key;
+  const cellId = event.target.parentElement.id;
+  const cellRow = Math.floor(cellId / 10);
+  const cellCol = cellId % 10;
+  let newCellId = null;
+
+  if(keyPressed === 'ArrowUp') {
+    newCellId = `${cellRow - 1}${cellCol}`;
+  } else if(keyPressed === 'ArrowDown') {
+    newCellId = `${cellRow + 1}${cellCol}`;
+  } else if(keyPressed === 'ArrowLeft') {
+    newCellId = `${cellRow}${cellCol - 1}`;
+  } else if(keyPressed === 'ArrowRight') {
+    newCellId = `${cellRow}${cellCol + 1}`;
+  }
+
+  if(newCellId){
+    cellRefs.value[newCellId].focus();
+  }
+}
 </script>
 
 <style lang="scss" scoped>
