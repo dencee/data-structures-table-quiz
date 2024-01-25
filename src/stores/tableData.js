@@ -12,9 +12,9 @@ export const useTableDataStore = defineStore('tableData', () => {
   const dataStructures = reactive(['array', 'list', 'stack', 'queue', 'set', 'map']);
   const operations = reactive(['declare', 'initialize', 'get', 'set', 'iterate', 'add', 'remove', 'insert']);
   const regexExpressions = reactive([
-    [/\bint\s*\[\s*\] \D+;$/, ],
-    [/\bint\s*\[\s*\] \D+\s*=\s*new int\[\d+\];/, ],
-    [/\bint\s\D+\s*=\D+\[\d+\];/, ],
+    [/^int\s*\[\s*\] \D+;$/, ],
+    [/^int\s*\[\s*\] \D+\s*=\s*new int\[\d+\];/, ],
+    [/^int\s\D+\s*=\D+\[\d+\];/, ],
     [],
     [],
     [],
@@ -30,7 +30,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'declare',
         bg: null,
         input: '',
-        regex: /\bint\s*\[\s*\]\s+[a-z]\D*\s*;$/,
+        regex: /^int\s*\[\s*\]\s+[a-z][a-zA-Z]*\s*;$/,
         correctAnswer: 'int[] arr;'
       },
       {
@@ -38,7 +38,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'declare',
         bg: null,
         input: '',
-        regex: /\bList<Integer>\s+[a-z]\D*\s*;$/,
+        regex: /^List<Integer>\s+[a-z][a-zA-Z]*\s*;$/,
         correctAnswer: 'List<Integer> myList;'
       },
       {
@@ -46,7 +46,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'declare',
         bg: null,
         input: '',
-        regex: /\bStack<Integer>\s+[a-z]\D*\s*;$/,
+        regex: /^Stack<Integer>\s+[a-z][a-zA-Z]*\s*;$/,
         correctAnswer: 'Stack<Integer> myStack;'
       },
       {
@@ -54,7 +54,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'declare',
         bg: null,
         input: '',
-        regex: /\Queue<Integer>\s+[a-z]\D*\s*;$/,
+        regex: /\Queue<Integer>\s+[a-z][a-zA-Z]*\s*;$/,
         correctAnswer: 'Queue<Integer> myQueue;'
       },
       {
@@ -62,7 +62,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'declare',
         bg: null,
         input: '',
-        regex: /\bSet<Integer>\s+[a-z]\D*\s*;$/,
+        regex: /^Set<Integer>\s+[a-z][a-zA-Z]*\s*;$/,
         correctAnswer: 'Set<Integer> mySet;'
       },
       {
@@ -70,7 +70,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'declare',
         bg: null,
         input: '',
-        regex: /\bMap<Integer\s*,\s*String>\s+[a-z]\D*\s*;$/,
+        regex: /^Map<Integer\s*,\s*String>\s+[a-z][a-zA-Z]*\s*;$/,
         correctAnswer: 'Map<Integer, String> myMap;'
       },
     ],
@@ -81,8 +81,8 @@ export const useTableDataStore = defineStore('tableData', () => {
         bg: null,
         input: '',
         regex: [
-          /\b[a-z]\D*\s*=\s*new\s+int\[\d+\]\s*;$/,
-          /\b(int|Integer)\s*\[\]\s+[a-z]\D*\s*=\s*new\s+int\[\d+\]\s*;$/,
+          /^[a-z][a-zA-Z]*\s*=\s*new\s+int\[\d+\]\s*;$/,
+          /^(int|Integer)\s*\[\]\s+[a-z][a-zA-Z]*\s*=\s*new\s+int\[\d+\]\s*;$/,
         ],
         correctAnswer: [
           'arr = new int[5];',
@@ -95,8 +95,8 @@ export const useTableDataStore = defineStore('tableData', () => {
         bg: null,
         input: '',
         regex: [
-          /\b[a-z]\D*\s*=\s*new\s+ArrayList<(\s*|Integer)>\(\)\s*;$/,
-          /\bList<Integer>\s+[a-z]\D*\s*=\s*new\s+ArrayList<(\s*|Integer)>\(\)\s*;$/,
+          /^[a-z][a-zA-Z]*\s*=\s*new\s+ArrayList<(\s*|Integer)>\(\)\s*;$/,
+          /^List<Integer>\s+[a-z][a-zA-Z]*\s*=\s*new\s+ArrayList<(\s*|Integer)>\(\)\s*;$/,
         ],
         correctAnswer: [
           'myList = new ArrayList<>();',
@@ -109,8 +109,8 @@ export const useTableDataStore = defineStore('tableData', () => {
         bg: null,
         input: '',
         regex: [
-          /\b[a-z]\D*\s*=\s*new\s+Stack<(\s*|Integer)>\(\)\s*;$/,
-          /\bStack<Integer>\s+[a-z]\D*\s*=\s*new\s+Stack<(\s*|Integer)>\(\)\s*;$/,
+          /^[a-z][a-zA-Z]*\s*=\s*new\s+Stack<(\s*|Integer)>\(\)\s*;$/,
+          /^Stack<Integer>\s+[a-z][a-zA-Z]*\s*=\s*new\s+Stack<(\s*|Integer)>\(\)\s*;$/,
         ],
         // TODO: Use ArrayDeque instead
         correctAnswer: [
@@ -124,8 +124,8 @@ export const useTableDataStore = defineStore('tableData', () => {
         bg: null,
         input: '',
         regex: [
-          /\b[a-z]\D*\s*=\s*new\s+LinkedList<(\s*|Integer)>\(\)\s*;$/,
-          /\bQueue<Integer>\s+[a-z]\D*\s*=\s*new\s+LinkedList<(\s*|Integer)>\(\)\s*;$/,
+          /^[a-z][a-zA-Z]*\s*=\s*new\s+LinkedList<(\s*|Integer)>\(\)\s*;$/,
+          /^Queue<Integer>\s+[a-z][a-zA-Z]*\s*=\s*new\s+LinkedList<(\s*|Integer)>\(\)\s*;$/,
         ],
         correctAnswer: [
           'myQueue = new LinkedList<>();',
@@ -138,8 +138,8 @@ export const useTableDataStore = defineStore('tableData', () => {
         bg: null,
         input: '',
         regex: [
-          /\b[a-z]\D*\s*=\s*new\s+HashSet<(\s*|Integer)>\(\)\s*;$/,
-          /\bSet<Integer>\s+[a-z]\D*\s*=\s*new\s+HashSet<(\s*|Integer)>\(\)\s*;$/,
+          /^[a-z][a-zA-Z]*\s*=\s*new\s+HashSet<(\s*|Integer)>\(\)\s*;$/,
+          /^Set<Integer>\s+[a-z][a-zA-Z]*\s*=\s*new\s+HashSet<(\s*|Integer)>\(\)\s*;$/,
         ],
         correctAnswer: [
           'mySet = new HashSet<>();',
@@ -152,8 +152,8 @@ export const useTableDataStore = defineStore('tableData', () => {
         bg: null,
         input: '',
         regex: [
-          /\b[a-z]\D*\s*=\s*new\s+HashMap<(\s*|Integer,\s*String)>\(\)\s*;$/,
-          /\bMap<Integer,\s*String>\s+[a-z]\D*\s*=\s*new\s+HashMap<(\s*|Integer,\s*String)>\(\)\s*;$/,
+          /^[a-z][a-zA-Z]*\s*=\s*new\s+HashMap<(\s*|Integer,\s*String)>\(\)\s*;$/,
+          /^Map<Integer,\s*String>\s+[a-z][a-zA-Z]*\s*=\s*new\s+HashMap<(\s*|Integer,\s*String)>\(\)\s*;$/,
         ],
         correctAnswer: [
           'myMap = new HashMap<>();',
@@ -167,7 +167,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'get',
         bg: null,
         input: '',
-        regex: /\b(int|Integer)\s+[a-z]\D*\s*=\s*[a-z]\D*\s*\[\d+\]\s*;$/,
+        regex: /^(int|Integer)\s+[a-z][a-zA-Z]*\s*=\s*[a-z][a-zA-Z]*\s*\[\d+\]\s*;$/,
         correctAnswer: 'int firstElement = arr[0];'
       },
       {
@@ -175,7 +175,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'get',
         bg: null,
         input: '',
-        regex: /\b(int|Integer)\s+[a-z]\D*\s*=\s*[a-z]\D*\.get\(\d+\)\s*;$/,
+        regex: /^(int|Integer)\s+[a-z][a-zA-Z]*\s*=\s*[a-z][a-zA-Z]*\.get\(\d+\)\s*;$/,
         correctAnswer: 'Integer firstElement = myList.get(0);'
       },
       
@@ -211,7 +211,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'get',
         bg: null,
         input: '',
-        regex: /\bString\s+[a-z]\D*\s*=\s*[a-z]\D*\.get\(\d+\)\s*;$/,
+        regex: /^String\s+[a-z][a-zA-Z]*\s*=\s*[a-z][a-zA-Z]*\.get\(\d+\)\s*;$/,
         correctAnswer: 'String value = myMap.get(42);'
       },
     ],
@@ -221,7 +221,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'set',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\s*\[\d+\]\s*=\s*\d+;$/,
+        regex: /^[a-z][a-zA-Z]*\s*\[\d+\]\s*=\s*\d+;$/,
         correctAnswer: 'arr[0] = 42;'
       },
       {
@@ -229,7 +229,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'set',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.set\(\s*\d+\s*,\s*\d+\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.set\(\s*\d+\s*,\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myList.set(0, 42);'
       },
       {
@@ -261,7 +261,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'set',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.put\(\d+\s*,\s*\".*\"\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.put\(\d+\s*,\s*\".*\"\)\s*;$/,
         correctAnswer: 'myMap.put(42, "Ana");'
       },
     ],
@@ -272,8 +272,8 @@ export const useTableDataStore = defineStore('tableData', () => {
         bg: null,
         input: '',
         regex: [
-          /\bfor\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z]\D*\.length\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
-          /\bfor\s*\(\s*(int|Integer)\s+[a-z]\D*\s*:\s*[a-z]\D*\s*\)\s*{\s*}$/,
+          /^for\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z][a-zA-Z]*\.length\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
+          /^for\s*\(\s*(int|Integer)\s+[a-z][a-zA-Z]*\s*:\s*[a-z][a-zA-Z]*\s*\)\s*{\s*}$/,
         ],
         correctAnswer: [
           'for(int i = 0; i < arr.length; i++){}',
@@ -286,8 +286,8 @@ export const useTableDataStore = defineStore('tableData', () => {
         bg: null,
         input: '',
         regex: [
-          /\bfor\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z]\D*\.size\(\)\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
-          /\bfor\s*\(\s*(int|Integer)\s+[a-z]\D*\s*:\s*[a-z]\D*\s*\)\s*{\s*}$/,
+          /^for\s*\(\s*int\s+(\w+)\s*=\s*\d+\s*;\s*\1\s*<\s*[a-z][a-zA-Z]*\.size\(\)\s*;\s*\1\+\+\s*\)\s*{\s*}$/,
+          /^for\s*\(\s*(int|Integer)\s+[a-z][a-zA-Z]*\s*:\s*[a-z][a-zA-Z]*\s*\)\s*{\s*}$/,
         ],
         correctAnswer: [
           'for(int i = 0; i < myList.size(); i++){}',
@@ -299,7 +299,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'iterate',
         bg: null,
         input: '',
-        regex: /\bwhile\s*\(\s*!\s*[a-z]\D*\.isEmpty\s*\(\s*\)\s*\)\s*{\s*}$/,
+        regex: /^while\s*\(\s*!\s*[a-z][a-zA-Z]*\.isEmpty\s*\(\s*\)\s*\)\s*{\s*}$/,
         correctAnswer: 'while(!myStack.isEmpty()){}'
       },
       {
@@ -307,7 +307,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'iterate',
         bg: null,
         input: '',
-        regex: /\bwhile\s*\(\s*!\s*[a-z]\D*\.isEmpty\s*\(\s*\)\s*\)\s*{\s*}$/,
+        regex: /^while\s*\(\s*!\s*[a-z][a-zA-Z]*\.isEmpty\s*\(\s*\)\s*\)\s*{\s*}$/,
         correctAnswer: 'while(!myQueue.isEmpty()){}'
       },
       {
@@ -315,7 +315,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'iterate',
         bg: null,
         input: '',
-        regex: /\bfor\s*\(\s*(int|Integer)\s+[a-z]\D*\s*:\s*[a-z]\D*\s*\)\s*{\s*}$/,
+        regex: /^for\s*\(\s*(int|Integer)\s+[a-z][a-zA-Z]*\s*:\s*[a-z][a-zA-Z]*\s*\)\s*{\s*}$/,
         correctAnswer: 'for(Integer eachElement : mySet){}'
       },
       {
@@ -323,7 +323,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'iterate',
         bg: null,
         input: '',
-        regex: /\bfor\s*\(\s*(int|Integer)\s+[a-z]\D*\s*:\s*[a-z]\D*\.keySet\(\)\s*\)\s*{\s*}$/,
+        regex: /^for\s*\(\s*(int|Integer)\s+[a-z][a-zA-Z]*\s*:\s*[a-z][a-zA-Z]*\.keySet\(\)\s*\)\s*{\s*}$/,
         correctAnswer: 'for(Integer eachKey : myMap.keySet()){}'
       },
     ],
@@ -341,7 +341,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'add',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.add\(\s*\d+\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.add\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myList.add(42);'
       },
       {
@@ -349,7 +349,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'add',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.push\(\s*\d+\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.push\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myStack.push(42);'
       },
       {
@@ -357,7 +357,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'add',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.offer\(\s*\d+\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.offer\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myQueue.offer(42);'
       },
       {
@@ -365,7 +365,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'add',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.add\(\s*\d+\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.add\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'mySet.add(42);',
       },
       {
@@ -373,7 +373,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'add',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.put\(\s*\d+\s*,\s*\".*\"\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.put\(\s*\d+\s*,\s*\".*\"\s*\)\s*;$/,
         correctAnswer: 'myMap.put(42, "Ana");'
       },
     ],
@@ -391,7 +391,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'remove',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.remove\(\s*\d+\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.remove\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myList.remove(0);'
       },
       {
@@ -399,7 +399,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'remove',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.pop\(\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.pop\(\s*\)\s*;$/,
         correctAnswer: 'myStack.pop();'
       },
       {
@@ -407,7 +407,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'remove',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.poll\(\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.poll\(\s*\)\s*;$/,
         correctAnswer: 'myQueue.poll();'
       },
       {
@@ -415,7 +415,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'remove',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.remove\(\s*\d+\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.remove\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'mySet.remove(42);'
       },
       {
@@ -423,7 +423,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'remove',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.remove\(\s*\d+\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.remove\(\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myMap.remove(42);'
       },
     ],
@@ -441,7 +441,7 @@ export const useTableDataStore = defineStore('tableData', () => {
         operation: 'insert',
         bg: null,
         input: '',
-        regex: /\b[a-z]\D*\.add\(\s*\d+\s*,\s*\d+\s*\)\s*;$/,
+        regex: /^[a-z][a-zA-Z]*\.add\(\s*\d+\s*,\s*\d+\s*\)\s*;$/,
         correctAnswer: 'myList.add(0, 42);'
       },
       {
